@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34916.146
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{F3B25554-65EF-47C0-9BE3-B96B3B03E3CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{57C69154-440E-49F7-9787-4BE7D534E587}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Catalog", "Services\Catalog\Ecommerce.Catalog\ECommerce.Catalog.csproj", "{75A6E054-D0BF-499F-B389-041376E2EAFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Discount", "Discount", "{B71E9BC6-99F8-4A53-99A4-20C13419C2CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Discount", "Services\Discount\ECommerce.Discount\ECommerce.Discount.csproj", "{57276AB7-06C7-4984-9454-FA58E821EDB3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75A6E054-D0BF-499F-B389-041376E2EAFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75A6E054-D0BF-499F-B389-041376E2EAFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75A6E054-D0BF-499F-B389-041376E2EAFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75A6E054-D0BF-499F-B389-041376E2EAFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57276AB7-06C7-4984-9454-FA58E821EDB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57276AB7-06C7-4984-9454-FA58E821EDB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57276AB7-06C7-4984-9454-FA58E821EDB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57276AB7-06C7-4984-9454-FA58E821EDB3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{57C69154-440E-49F7-9787-4BE7D534E587} = {F3B25554-65EF-47C0-9BE3-B96B3B03E3CE}
+		{75A6E054-D0BF-499F-B389-041376E2EAFF} = {57C69154-440E-49F7-9787-4BE7D534E587}
+		{B71E9BC6-99F8-4A53-99A4-20C13419C2CE} = {F3B25554-65EF-47C0-9BE3-B96B3B03E3CE}
+		{57276AB7-06C7-4984-9454-FA58E821EDB3} = {B71E9BC6-99F8-4A53-99A4-20C13419C2CE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C448E713-6666-488B-98F0-076F01EC710B}
+	EndGlobalSection
+EndGlobal
