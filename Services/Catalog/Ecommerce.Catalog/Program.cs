@@ -3,10 +3,19 @@ using Ecommerce.Catalog.Services.ProductDetailServices;
 using Ecommerce.Catalog.Services.ProductImageServices;
 using Ecommerce.Catalog.Services.ProductServices;
 using Ecommerce.Catalog.Settings;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(Options =>
+{
+    Options.Authority = builder.Configuration["IdentityServerUrl"];
+    Options.Audience = "ResourceCatalog";  // identity server tarafında bu ismi kullandık
+    Options.RequireHttpsMetadata = false; //appsettingste hptt kullandık o yüzden buraya bu kodu yazma gereksinimi duyduk.
+});
 
 // Add services to the container.
 // Ninject ile aynı işi yapmıyor mu?
@@ -44,6 +53,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

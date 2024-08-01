@@ -1,10 +1,12 @@
 ﻿using Ecommerce.Catalog.Dtos.CategoryDtos;
 using Ecommerce.Catalog.Services.CategoryServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Catalog.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
 
@@ -27,7 +29,7 @@ namespace Ecommerce.Catalog.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> getCategoryById(string id)
         {
-            var values =await _categoryService.getByIdCategoryAsync(id);
+            var values =await _categoryService.GetByIdCategoryAsync(id);
             return Ok(values);
         }
 
