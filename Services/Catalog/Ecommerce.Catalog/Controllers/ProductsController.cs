@@ -7,7 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Catalog.Controllers
 {
-    [Authorize]
+    //[Authorize]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
@@ -40,7 +41,7 @@ namespace Ecommerce.Catalog.Controllers
             return Ok("Ürün Başarıyla Eklendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> deleteProduct(string id)
         {
             await _productService.DeleteProductDtoAsync(id);
@@ -52,6 +53,13 @@ namespace Ecommerce.Catalog.Controllers
         {
             await _productService.UpdateProductDtoAsync(updateProductDto);
             return Ok("Ürün Başarıyla Güncellendi");
+        }
+
+        [HttpGet("ProductListWithCategory")]
+        public async Task<IActionResult> ProductListWithCategory()
+        {
+            var values = await _productService.GetProductsWithCategoryAsync();
+            return Ok(values);
         }
     }
 }

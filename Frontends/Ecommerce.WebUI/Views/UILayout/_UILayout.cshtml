@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+@await Component.InvokeAsync("_HeadUILayoutComponentPartial")
+
+<body>
+    <!-- Topbar Start -->
+    @await Component.InvokeAsync("_TopbarUILayoutComponentPartial")
+    <!-- Topbar End -->
+    <!-- Navbar Start -->
+    @await Component.InvokeAsync("_NavbarUILayoutComponentPartial")
+    <!-- Navbar End -->
+    <!-- Breadcrumb Start -->
+    @RenderBody()
+    <!-- Breadcrumb End -->
+    <!-- Contact Start -->
+    <!-- Eklenmedi -->
+    <!-- Contact End -->
+    <!-- Footer Start -->
+    @await Component.InvokeAsync("_FooterDefaultComponentPartial")
+    <!-- Footer End -->
+    <!-- Scripts Start -->
+    @await Component.InvokeAsync("_ScriptUILayoutComponentPartial");
+    <!-- Scripts End -->
+</body>
+</html>

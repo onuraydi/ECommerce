@@ -37,7 +37,7 @@ namespace Ecommerce.Catalog.Controllers
             return Ok("Ürün Detayı Başarılıyla Eklendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> deleteProductDetail(string id)
         {
             await _productDetailService.DeleteProductDetailAsync(id);

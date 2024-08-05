@@ -4,6 +4,7 @@ using Ecommerce.Catalog.Dtos.ProductDetailDtos;
 using Ecommerce.Catalog.Dtos.ProductDtos;
 using Ecommerce.Catalog.Dtos.ProductImageDtos;
 using Ecommerce.Catalog.Entities;
+using ECommerce.Catalog.Dtos.ProductDtos;
 
 namespace Ecommerce.Catalog.Mapping
 { 
@@ -34,6 +35,8 @@ namespace Ecommerce.Catalog.Mapping
             CreateMap<ProductImage, CreateProductImageDto>().ReverseMap();
             CreateMap<ProductImage, UpdateProductImageDto>().ReverseMap();
             CreateMap<ProductImage, GetByIdProductImageDto>().ReverseMap();
+
+            CreateMap<Product,ResultProductsWithCategoryDto>().ReverseMap();
         }
     }
 }

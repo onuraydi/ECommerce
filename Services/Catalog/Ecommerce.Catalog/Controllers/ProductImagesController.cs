@@ -37,7 +37,7 @@ namespace Ecommerce.Catalog.Controllers
             return Ok("Üün Resmi başarıyla Eklendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> deleteProductImage(string id)
         {
             await _productImageService.DeleteProductImageAsync(id);

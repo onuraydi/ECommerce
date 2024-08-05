@@ -6,7 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Catalog.Controllers
 {
-    [Authorize]
+    //[Authorize]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
 
@@ -39,14 +40,14 @@ namespace Ecommerce.Catalog.Controllers
             await _categoryService.CreateCategoryAsync(createCategoryDto);
             return Ok("Kategori Başarıyla Eklendi");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]// bu id diğer frontrend/admin/categorycontrollerda ?id= kullanmamak için konuldu
         public async Task<IActionResult> deleteCategory(string id)
         {
             await _categoryService.DeleteCategoryAsync(id);
             return Ok("Kategori Başarıyla Silindi");
         }
 
-        [HttpPut]
+        [HttpPut]  
         public async Task<IActionResult> updateCategory(UpdateCategoryDto updateCategoryDto)
         {
             await _categoryService.UpdateCategoryAsync(updateCategoryDto);
