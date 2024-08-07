@@ -3,6 +3,8 @@ using Ecommerce.Catalog.Services.ProductDetailServices;
 using Ecommerce.Catalog.Services.ProductImageServices;
 using Ecommerce.Catalog.Services.ProductServices;
 using Ecommerce.Catalog.Settings;
+using ECommerce.Catalog.Services.FetaureSliderServices;
+using ECommerce.Catalog.Services.SpeacialOfferServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using System.Reflection;
@@ -23,6 +25,8 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();   // ICatergory
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
 builder.Services.AddScoped<IProductImageService, ProductImageService>();
+builder.Services.AddScoped<IfeatureSliderService, FeatureSliderService>();
+builder.Services.AddScoped<ISpeacialOfferService, SpeacialOfferService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());  // Auto mapper için
 

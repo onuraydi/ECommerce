@@ -1,4 +1,4 @@
-﻿using ECommerce.DtoLayer.CalatogDtos.CategoryDtos;
+﻿    using ECommerce.DtoLayer.CalatogDtos.CategoryDtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -54,7 +54,7 @@ namespace Ecommerce.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> CreateCategory(CreateCategoryDto createCategoryDto)
         {
             var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createCategoryDto);
+            var jsonData = JsonConvert.SerializeObject(createCategoryDto);  
             StringContent content = new StringContent(jsonData,Encoding.UTF8,"application/json");
             var responseMessage = await client.PostAsync("https://localhost:7070/api/Categories",content);
             if (responseMessage.IsSuccessStatusCode)
@@ -63,6 +63,7 @@ namespace Ecommerce.WebUI.Areas.Admin.Controllers
             }
             return View();
         }
+
         [HttpDelete("{id}")]
         [Route("DeleteCategory/{id}")]
         public async Task<IActionResult> DeleteCategory(string id)

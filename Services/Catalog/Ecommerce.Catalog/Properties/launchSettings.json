@@ -12,7 +12,7 @@
     "Ecommerce.Catalog": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": false,  // uyglama çalışacak ancak tarayıcı açılmayacak
+      "launchBrowser": false ,  // uyglama çalışacak ancak tarayıcı açılmayacak
       "launchUrl": "swagger",
       "applicationUrl": "https://localhost:7070",
       "environmentVariables": {

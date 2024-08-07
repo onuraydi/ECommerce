@@ -1,0 +1,31 @@
+﻿@model CreateFeatureSliderDto
+@{
+    ViewData["Title"] = "CreateFeatureSlider";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Öne Çıkan Ekleme Sayfası</h4>
+                <p>Öne Çıkanlar ile ilgili ekleme işlemlerini aşağıdaki panel üzerinden gerçekleştirebilirsiniz.</p>
+                <div class="bs-example" data-example-id="bordered-table">
+                    <form method="post">
+                        <label>Öne Çıkan Başlığı</label>
+                        <input type="text" class="form-control" asp-for="Title" placeholder="Öne Çıkan Başlığını Giriniz " />
+                        <br />
+                        <label>Öne Çıkan Detayı(Alt Bilgi)</label>
+                        <input type="text" class="form-control" asp-for="Description" placeholder="Öne Çıkan ile ilgili detayları Giriniz " />
+                        <br />
+                        <label>Öne Çıkan Resmi</label>
+                        <input type="text" class="form-control" asp-for="ImageUrl" placeholder="Öne Çıkanın resim URL'ini giriniz(Şimdilik)" />
+                        <br />
+                        <button class="btn btn-success">Öne Çıkanı Ekle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
