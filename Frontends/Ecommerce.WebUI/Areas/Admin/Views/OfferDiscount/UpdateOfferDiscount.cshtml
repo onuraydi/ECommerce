@@ -1,0 +1,34 @@
+﻿@model UpdateOfferDiscountDto
+@{
+    ViewData["Title"] = "UpdateOfferDiscount";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>İndirim Güncelleme Sayfası</h4>
+                <p>İndiirmler ile ilgili Güncelleme işlemlerini aşağıdaki panel üzerinden gerçekleştirebilirsiniz.</p>
+                <div class="bs-example" data-example-id="bordered-table">
+                    <form method="post">
+                        <input type="hidden" asp-for="OfferDiscounId" />
+                        <label>İndirim Başlığı</label>
+                        <input type="text" class="form-control" asp-for="Title" />
+                        <br />
+                        <label>İndirimin Alt Başlığı</label>
+                        <input type="text" class="form-control" asp-for="SubTitle" />
+                        <br />
+                        <label>İndirimin Buton Yazısı</label>
+                        <input type="text" class="form-control" asp-for="ButtonText" />
+                        <br />
+                        <label>İndirimin Arka Plan Resmi</label>
+                        <input type="text" class="form-control" asp-for="ImageUrl" />
+                        <br />
+                        <button class="btn btn-success">İndirimi Güncelle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

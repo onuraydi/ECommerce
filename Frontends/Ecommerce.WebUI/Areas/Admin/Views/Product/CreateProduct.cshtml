@@ -18,11 +18,14 @@
                         <label>Fiyat</label>
                         <input type="text" class="form-control" asp-for="ProductPrice" placeholder="Ürünün Fiyatını Giriniz" />
                         <br />
+                        <label>Eski Fiyat</label>
+                        <input type="text" class="form-control" asp-for="ProductOldPrice" placeholder="Ürünün İndirimsiz Fiyatını Giriniz" />
+                        <br />
                         <label>Ürün Resmi</label>
                         <input type="text" class="form-control" asp-for="ProductImageURL" placeholder="Şimdilik Ürün Resminin URL'ini Giriniz" />
                         <br />
                         <label>Ürün Kategorisi</label>
-                        @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.CategoryValues, new { @class = "form-control", @style="padding:0;" })
+                        @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.CategoryValues, new { @class = "form-control", @style = "padding:0;" })
                         <br />
                         <label>Ürün Açıklaması</label>
                         <textarea class="form-control" asp-for="ProductDescription" placeholder="Ürün İle İlgili Açıklamaları Giriniz" rows="5"></textarea>

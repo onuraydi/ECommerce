@@ -1,0 +1,48 @@
+﻿@model List<ResultOfferDiscountDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>İndirim Listesi</h4>
+                <p>İndirimler ile ilgili işlemleri aşağıdaki tablo üzerinden gerçekleştirebilirsiniz.</p>
+                <div class="bs-example" data-example-id="bordered-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>İndirm Başlığı</th>
+                                <th>İndirim Alt Başlığı</th>
+                                <th>Buton Yazısı</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <th scope="row">@count</th>
+                                    <td>@item.Title</td>
+                                    <td>@item.SubTitle</td>
+                                    <td>@item.ButtonText</td>
+                                    <td><a href="/Admin/OfferDiscount/DeleteOfferDiscount/@item.OfferDiscounId" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Admin/OfferDiscount/UpdateOfferDiscount/@item.OfferDiscounId" class="btn btn-primary">Güncelle </a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <a href="/Admin/OfferDiscount/CreateOfferDiscount/" class="btn btn-success">Yeni İndirim Ekle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

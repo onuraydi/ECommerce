@@ -1,0 +1,34 @@
+﻿@model CreateOfferDiscountDto
+@{
+    ViewData["Title"] = "CreateOfferDiscount";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>İndirim Ekleme Sayfası</h4>
+                <p>indirimler ile ilgili ekleme işlemlerini aşağıdaki panel üzerinden gerçekleştirebilirsiniz.</p>
+                <div class="bs-example" data-example-id="bordered-table">
+                    <form method="post">
+                        <label>İndirim Başlığı</label>
+                        <input type="text" class="form-control" asp-for="Title" placeholder="İndirimin Başlığını Giriniz " />
+                        <br />
+                        <label>İndirim Alt Başlığı</label>
+                        <input type="text" class="form-control" asp-for="SubTitle" placeholder="İndirimin Alt Başlığını Giriniz " />
+                        <br />
+                        <label>İndirim Buton Yazısı</label>
+                        <input type="text" class="form-control" asp-for="ButtonText" placeholder="İndirimin Butonunun Yazısını Giriniz" />
+                        <br />
+                        <label>Indirim Arkaplan Resmi</label>
+                        <input type="text" class="form-control" asp-for="ImageUrl" placeholder="İndirim Arka Plan Resminin URL'sini Giriniz(Şimdilik)" />
+                        <br />
+                        <button class="btn btn-success">İndirimi Ekle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -3,7 +3,6 @@ using Ecommerce.Catalog.Dtos.CategoryDtos;
 using Ecommerce.Catalog.Entities;
 using Ecommerce.Catalog.Settings;
 using MongoDB.Driver;
-using System.Collections.Generic;
 
 namespace Ecommerce.Catalog.Services.CategoryServices
 {

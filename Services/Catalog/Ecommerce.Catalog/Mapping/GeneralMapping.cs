@@ -4,7 +4,11 @@ using Ecommerce.Catalog.Dtos.ProductDetailDtos;
 using Ecommerce.Catalog.Dtos.ProductDtos;
 using Ecommerce.Catalog.Dtos.ProductImageDtos;
 using Ecommerce.Catalog.Entities;
+using ECommerce.Catalog.Dtos.AboutDtos;
+using ECommerce.Catalog.Dtos.BrandDtos;
+using ECommerce.Catalog.Dtos.FeatureDtos;
 using ECommerce.Catalog.Dtos.FeatureSliderDtos;
+using ECommerce.Catalog.Dtos.OfferDiscountDtos;
 using ECommerce.Catalog.Dtos.ProductDtos;
 using ECommerce.Catalog.Dtos.SpecialOfferDtos;
 using ECommerce.Catalog.Entities;
@@ -51,6 +55,30 @@ namespace Ecommerce.Catalog.Mapping
             CreateMap<SpecialOffer, UpdateSpecialOfferDto>().ReverseMap();
             CreateMap<SpecialOffer, CreateSpecialOfferDto>().ReverseMap();
             CreateMap<SpecialOffer, GetByIdSpecialOfferDto>().ReverseMap();
+
+            // Feature için mapleme
+            CreateMap<Feature, ResultFeatureDto>().ReverseMap();
+            CreateMap<Feature, GetByIdFeatureDto>().ReverseMap();
+            CreateMap<Feature, CreateFeatureDto>().ReverseMap();
+            CreateMap<Feature, UpdateFeatureDto>().ReverseMap();
+
+            // Offer Discount için mapleme
+            CreateMap<OfferDiscount, ResultOfferDiscountDto>().ReverseMap();
+            CreateMap<OfferDiscount, CreateOfferDiscountDto>().ReverseMap();
+            CreateMap<OfferDiscount, UpdateOfferDiscountDto>().ReverseMap();
+            CreateMap<OfferDiscount, GetByIdOfferDiscountDto>().ReverseMap();
+
+            // Brands için mapleme
+            CreateMap<Brand, ResultBrandDto>().ReverseMap();
+            CreateMap<Brand, CreateBrandDto>().ReverseMap();
+            CreateMap<Brand, UpdateBrandDto>().ReverseMap();
+            CreateMap<Brand, GetByIdBrandDto>().ReverseMap();
+
+            //About için mapleme
+            CreateMap<About, ResultAboutDto>().ReverseMap();
+            CreateMap<About, CreateAboutDto>().ReverseMap();
+            CreateMap<About, UpdateAboutDto>().ReverseMap();
+            CreateMap<About, GetByIdAboutDto>().ReverseMap();
         }
     }
 }

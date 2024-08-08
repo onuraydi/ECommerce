@@ -20,7 +20,7 @@ namespace Ecommerce.WebUI.Areas.Admin.Controllers
         [Route("Index")]    
         public async Task<IActionResult> Index()
         {
-            ViewBag.baslik = "Kategori İşlemleri";
+            ViewBag.baslik = "Öne Çıkan İşlemleri";
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Öne Çıkanlar";
             ViewBag.v3 = "Öne Çıkanlar Listesi";
@@ -40,7 +40,7 @@ namespace Ecommerce.WebUI.Areas.Admin.Controllers
         [Route("CreateFeatureSlider")]
         public IActionResult CreateFeatureSlider()
         {
-            ViewBag.baslik = "Kategori İşlemleri";
+            ViewBag.baslik = "Öne Çıkan İşlemleri";
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Öne Çıkanlar";
             ViewBag.v3 = "Öne Çıkan Ekleme";
@@ -78,9 +78,9 @@ namespace Ecommerce.WebUI.Areas.Admin.Controllers
 
         [HttpGet]
         [Route("UpdateFeatureSlider/{id}")]
-        public async Task<IActionResult> UpdateFeatureSlider(string id)
+        public async Task<IActionResult> UpdateFeatureSlider(string id) 
         {
-            ViewBag.baslik = "Kategori İşlemleri";
+            ViewBag.baslik = "Öne Çıkan İşlemleri";
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Öne Çıkanlar";
             ViewBag.v3 = "Öne Çıkan Güncelleme";

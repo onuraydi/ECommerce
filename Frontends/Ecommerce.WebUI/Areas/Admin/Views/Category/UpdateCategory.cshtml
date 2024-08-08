@@ -12,9 +12,12 @@
                 <p>Kategori ile ilgili Güncelleme işlemlerini aşağıdaki panel üzerinden gerçekleştirebilirsiniz.</p>
                 <div class="bs-example" data-example-id="bordered-table">
                     <form method="post">
-                        <input type="hidden" asp-for="CategoryID"/>
+                        <input type="hidden" asp-for="CategoryID" />
                         <label>Kategori Adı</label>
-                        <input type="text" class="form-control" asp-for="CategoryName" placeholder="Kategori Adını Giriniz " />
+                        <input type="text" class="form-control" asp-for="CategoryName" />
+                        <br />
+                        <label>Kategori Resmi</label>
+                        <input type="text" class="form-control" asp-for="ImageUrl" />
                         <br />
                         <button class="btn btn-success">Kategoriyi Güncelle</button>
                     </form>

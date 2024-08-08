@@ -11,6 +11,7 @@ namespace Ecommerce.Catalog.Entities
         public string CategoryID { get; set; } // MongoDB bir ilişkisel veritabanı olmadığı için ID değeri integer değil string türde tutulur.
                                                // buna bir guide değer atanır
         public string CategoryName { get; set; }
+        public string ImageUrl { get; set; }
 
 
     }

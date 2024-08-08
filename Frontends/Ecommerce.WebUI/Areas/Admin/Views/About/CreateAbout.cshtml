@@ -1,0 +1,36 @@
+﻿@model CreateAboutDto
+@{
+    ViewData["Title"] = "CreateAbout";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Hakkımda Ekleme Sayfası</h4>
+                <p>Hakkımda Kısmı ile ilgili ekleme işlemlerini aşağıdaki panel üzerinden gerçekleştirebilirsiniz.</p>
+                <div class="bs-example" data-example-id="bordered-table">
+                    <form method="post">
+                        <label>Başlık</label>
+                        <input type="text" class="form-control" asp-for="Title" placeholder="Hakkımda Kısmının Başlığını Giriniz " />
+                        <br />
+                        <label>Açıklama</label>
+                        <input type="text" class="form-control" asp-for="Description" placeholder="Hakkımda Kısmının Açıklamasını Giriniz " />
+                        <br />
+                        <label>Adres</label>
+                        <input type="text" class="form-control" asp-for="Address" placeholder="Adres Giriniz " />
+                        <br />
+                        <label>E-Mail</label>
+                        <input type="email" class="form-control" asp-for="Email" placeholder="Mail Adresi Giriniz " />
+                        <br />
+                        <label>Telefon Numarası</label>
+                        <input type="tel" class="form-control" asp-for="PhoneNumber" placeholder="Telefon Numarası Giriniz " />
+                        <br />
+                        <button class="btn btn-success">Hakkımda kısmını Ekle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

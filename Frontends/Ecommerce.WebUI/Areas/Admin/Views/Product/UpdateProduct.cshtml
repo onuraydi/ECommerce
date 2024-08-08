@@ -13,12 +13,15 @@
                 <p>Ürün ile ilgili güncelleme işlemlerini aşağıdaki panel üzerinden gerçekleştirebilirsiniz.</p>
                 <div class="bs-example" data-example-id="bordered-table">
                     <form method="post">
-                        <input type="hidden" asp-for="ProductID"/>
+                        <input type="hidden" asp-for="ProductID" />
                         <label>Ürün Adı</label>
                         <input type="text" class="form-control" asp-for="ProductName" placeholder="Ürün Adını Giriniz" />
                         <br />
                         <label>Fiyat</label>
                         <input type="text" class="form-control" asp-for="ProductPrice" placeholder="Ürünün Fiyatını Giriniz" />
+                        <br />
+                        <label>Eski Fiyat</label>
+                        <input type="text" class="form-control" asp-for="ProductOldPrice" placeholder="Ürünün İndirimsiz Fiyatını Giriniz" />
                         <br />
                         <label>Ürün Resmi</label>
                         <input type="text" class="form-control" asp-for="ProductImageURL" placeholder="Şimdilik Ürün Resminin URL'ini Giriniz" />
