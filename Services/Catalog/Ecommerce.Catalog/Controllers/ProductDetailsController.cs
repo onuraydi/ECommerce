@@ -1,10 +1,12 @@
 ﻿using Ecommerce.Catalog.Dtos.ProductDetailDtos;
 using Ecommerce.Catalog.Services.ProductDetailServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Catalog.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductDetailsController : ControllerBase
@@ -27,6 +29,13 @@ namespace Ecommerce.Catalog.Controllers
         public async Task<IActionResult> GetProductDetailById(string id)
         {
             var values = await _productDetailService.GetByIdProductDetailAsync(id);
+            return Ok(values);
+        }
+
+        [HttpGet("GetProductDetailByProductId")]
+        public async Task<IActionResult> GetProductDetailByProductId(string id)
+        {
+            var values = await _productDetailService.GetByProductIdProductDetailAsync(id);
             return Ok(values);
         }
 

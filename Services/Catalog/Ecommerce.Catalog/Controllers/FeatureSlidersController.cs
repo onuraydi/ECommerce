@@ -7,8 +7,7 @@ using System.Security.Cryptography;
 
 namespace ECommerce.Catalog.Controllers
 {
-    //[Authorize]
-    [AllowAnonymous]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class FeatureSlidersController : ControllerBase

@@ -55,6 +55,16 @@ namespace Ecommerce.Catalog.Services.ProductServices
             return _mapper.Map<List<ResultProductsWithCategoryDto>>(values);
         }
 
+        public async Task<List<ResultProductsWithCategoryDto>> GetProductsWithCategoryByCategoryIdAsync(string categoryId)
+        {
+            var values = await _productCollection.Find(x => x.CategoryID == categoryId).ToListAsync();
+            foreach (var item in values)
+            {
+                item.Category = await _categoyColleciton.Find<Category>(y => y.CategoryID == item.CategoryID).FirstOrDefaultAsync();
+            }
+            return _mapper.Map<List<ResultProductsWithCategoryDto>>(values);
+        }
+
         public async Task UpdateProductDtoAsync(UpdateProductDto updateProductDto)
         {
             var values = _mapper.Map<Product>(updateProductDto);

@@ -24,6 +24,8 @@
                                 <th>Kategori</th>
                                 <th>Sil</th>
                                 <th>Güncelle</th>
+                                <th>Ürün Resimleri</th>
+                                <th>Ürün Detayları</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,6 +40,8 @@
                                     <td>@urun.Category.CategoryName</td>
                                     <td><a href="/Admin/Product/DeleteProduct/@urun.ProductID" class="btn btn-danger">Sil</a></td>
                                     <td><a href="/Admin/Product/UpdateProduct/@urun.ProductID" class="btn btn-primary">Güncelle </a></td>
+                                    <td><a href="/Admin/ProductImage/ProductImageDetail/@urun.ProductID" class="btn btn-warning">Ürün Resimleri </a></td>
+                                    <td><a href="/Admin/ProductDetail/UpdateProductDetail/@urun.ProductID" class="btn btn-info">Ürün Detayları </a></td>
                                 </tr>
                             }
                         </tbody>

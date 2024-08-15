@@ -10,7 +10,9 @@ using static IdentityServer4.IdentityServerConstants;
 
 namespace ECommerce.IdentityServerdotnet.Controllers
 {
-    [Authorize(LocalApi.PolicyName)]  // ilgili kullanıcı access token'a sahip değilse işlem gerçekleşemeyecek
+
+    /*[Authorize(LocalApi.PolicyName)] */ // ilgili kullanıcı access token'a sahip değilse işlem gerçekleşemeyecek
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class RegistersController : ControllerBase
