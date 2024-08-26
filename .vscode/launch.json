@@ -1,0 +1,12 @@
+{
+    "configurations": [
+        
+        {
+            "name": "C#: ECommerce.OcelotGateway",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}\\ApiGateway\\ECommerce.OcelotGateway\\ECommerce.OcelotGateway.csproj",
+            "launchConfigurationId": "TargetFramework=;ECommerce.OcelotGateway"
+        }
+    ]
+}

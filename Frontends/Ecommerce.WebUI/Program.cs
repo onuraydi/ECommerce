@@ -1,7 +1,10 @@
 using Ecommerce.WebUI.Controllers;
+using Ecommerce.WebUI.Handlers;
+using Ecommerce.WebUI.Services.CatalogServices.CategoryServices;
 using Ecommerce.WebUI.Services.Concrete;
 using Ecommerce.WebUI.Services.Interfaces;
 using Ecommerce.WebUI.Settings;
+using ECommerce.WebUI.Settings;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
@@ -11,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(JwtBearerDefaults.AuthenticationScheme, opt =>
 {
-    opt.LoginPath = "/Login/Index/"; 
+    opt.LoginPath = "/Login/Index/";
     opt.LogoutPath = "/Login/LogOut/";
     opt.AccessDeniedPath = "/Pages/AccessDenied/";
     opt.Cookie.HttpOnly = true;
@@ -21,7 +24,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCo
 });
 
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,opt =>
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, opt =>
 {
     opt.LoginPath = "/Login/Index/";
     opt.ExpireTimeSpan = TimeSpan.FromDays(5);
@@ -29,15 +32,38 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     opt.SlidingExpiration = true;
 });
 
+builder.Services.AddAccessTokenManagement();
 
 builder.Services.AddHttpContextAccessor();
+
+
 builder.Services.AddHttpClient<IIdentityService, IdentityService>();
-builder.Services.AddScoped<ILoginService , LoginService>();
+builder.Services.AddScoped<ILoginService, LoginService>();
 
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
 
 builder.Services.Configure<ClientSettings>(builder.Configuration.GetSection("ClientSettings"));
+builder.Services.Configure<ServiceApiSettings>(builder.Configuration.GetSection("serviceApiSettings"));
+
+builder.Services.AddScoped<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddScoped<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTokenService>();
+
+var values = builder.Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
+builder.Services.AddHttpClient<IUserService, UserService>(opt =>
+{
+    opt.BaseAddress = new Uri(values.IdinetityServerUrl);
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");  
+
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
 
 var app = builder.Build();
 
