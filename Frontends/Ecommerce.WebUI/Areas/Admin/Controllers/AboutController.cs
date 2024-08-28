@@ -1,4 +1,5 @@
-﻿using ECommerce.DtoLayer.CalatogDtos.AboutDtos;
+﻿using Ecommerce.WebUI.Services.CatalogServices.AboutService;
+using ECommerce.DtoLayer.CalatogDtos.AboutDtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -7,15 +8,15 @@ using System.Text;
 namespace Ecommerce.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [AllowAnonymous]
     [Route("Admin/About")]
     public class AboutController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
-
-        public AboutController(IHttpClientFactory httpClientFactory)
+        private readonly IAboutService _aboutService;
+        public AboutController(IHttpClientFactory httpClientFactory, IAboutService aboutService)
         {
             _httpClientFactory = httpClientFactory;
+            _aboutService = aboutService;
         }
 
         [HttpGet]
@@ -27,15 +28,8 @@ namespace Ecommerce.WebUI.Areas.Admin.Controllers
             ViewBag.v2 = "Hakkımda Kısmı";
             ViewBag.v3 = "Hakkımda Kısmı Listesi";
 
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7070/api/Abouts");
-            if(responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultAboutDto>>(jsonData);
-                return View(values);
-            }
-            return View();
+            var values = await _aboutService.GetAllAboutAsync();
+            return View(values);
         }
 
         [HttpGet]
@@ -54,15 +48,8 @@ namespace Ecommerce.WebUI.Areas.Admin.Controllers
         [Route("CreateAbout")]
         public async Task<IActionResult> CreateAbout(CreateAboutDto createAboutDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createAboutDto);
-            StringContent stringContent = new StringContent(jsonData,Encoding.UTF8,"application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7070/api/Abouts", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "About", new { area = "Admin" });
-            }
-            return View();
+            await _aboutService.CreateAboutAsync(createAboutDto);
+            return RedirectToAction("Index", "About", new { area = "Admin" });
         }
 
         [HttpGet]
@@ -74,43 +61,24 @@ namespace Ecommerce.WebUI.Areas.Admin.Controllers
             ViewBag.v2 = "Hakkımda Kısmı";
             ViewBag.v3 = "Hakkımda Kısmı Güncelleme";
 
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7070/api/Abouts/" + id);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateAboutDto>(jsonData);
-                return View(values);
-            }
-            return View();
+            var values = await _aboutService.GetByIdAboutAsync(id);
+            return View(values);
         }
 
         [HttpPost]
         [Route("UpdateAbout/{id}")]
         public async Task<IActionResult> UpdateAbout(UpdateAboutDto updateAboutDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(updateAboutDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7070/api/Abouts/", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "About", new { area = "Admin" });
-            }
-            return View();
+            await _aboutService.UpdateAboutAsync(updateAboutDto);
+            return RedirectToAction("Index", "About", new { area = "Admin" });
         }
 
         [HttpDelete("{id}")]
         [Route("DeleteAbout/{id}")]
         public async Task<IActionResult> DeleteAbout(string id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync("https://localhost:7070/api/Abouts/"+id);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "About", new { area = "Admin" });
-            }
-            return View();
+            await _aboutService.DeleteAboutAsync(id);
+            return RedirectToAction("Index", "About", new { area = "Admin" });
         }
     }
 }

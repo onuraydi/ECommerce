@@ -1,6 +1,13 @@
 using Ecommerce.WebUI.Controllers;
 using Ecommerce.WebUI.Handlers;
+using Ecommerce.WebUI.Services.CatalogServices.AboutService;
+using Ecommerce.WebUI.Services.CatalogServices.BrandServices;
 using Ecommerce.WebUI.Services.CatalogServices.CategoryServices;
+using Ecommerce.WebUI.Services.CatalogServices.FeatureServices;
+using Ecommerce.WebUI.Services.CatalogServices.FeatureSliderServices;
+using Ecommerce.WebUI.Services.CatalogServices.OfferDiscountServices;
+using Ecommerce.WebUI.Services.CatalogServices.ProductServices;
+using Ecommerce.WebUI.Services.CatalogServices.SpecialOfferServices;
 using Ecommerce.WebUI.Services.Concrete;
 using Ecommerce.WebUI.Services.Interfaces;
 using Ecommerce.WebUI.Settings;
@@ -58,12 +65,61 @@ builder.Services.AddHttpClient<IUserService, UserService>(opt =>
     opt.BaseAddress = new Uri(values.IdinetityServerUrl);
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
+//categories
 builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");  
 
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
+//products
+builder.Services.AddHttpClient<IProductService, ProductService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+//special offers
+builder.Services.AddHttpClient<ISpecialOfferService, SpecialOfferService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+//feature sliders
+builder.Services.AddHttpClient<IFeatureSliderService, FeatureSliderService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+//feature 
+builder.Services.AddHttpClient<IFeatureService, FeatureService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+//offer discount
+builder.Services.AddHttpClient<IOfferDiscountService, OfferDiscountService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+//brands
+builder.Services.AddHttpClient<IBrandService, BrandService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+//abouts
+builder.Services.AddHttpClient<IAboutService, AboutService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 var app = builder.Build();
 

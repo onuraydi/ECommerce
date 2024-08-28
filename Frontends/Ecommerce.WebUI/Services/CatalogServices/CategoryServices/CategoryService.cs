@@ -1,4 +1,5 @@
 ﻿using ECommerce.DtoLayer.CalatogDtos.CategoryDtos;
+using Newtonsoft.Json;
 
 namespace Ecommerce.WebUI.Services.CatalogServices.CategoryServices
 {
@@ -13,31 +14,32 @@ namespace Ecommerce.WebUI.Services.CatalogServices.CategoryServices
 
         public async Task CreateCategoryAsync(CreateCategoryDto createCategoryDto)
         {
-            await _httpClient.PutAsJsonAsync<CreateCategoryDto>("categories", createCategoryDto);
+            await _httpClient.PostAsJsonAsync("categories", createCategoryDto);
         }
-
+    
         public async Task DeleteCategoryAsync(string id)
         {
-            await _httpClient.DeleteAsync("categories/" + id);  // ??????????!!!!!!!!!!!
+            await _httpClient.DeleteAsync("categories/" + id); 
         }
 
         public async Task<List<ResultCategoryDto>> GetAllCategoryAsync()
         {
             var responseMessage = await _httpClient.GetAsync("categories");
-            var values = await responseMessage.Content.ReadFromJsonAsync<List<ResultCategoryDto>>();
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
             return values;
         }
 
-        public async Task<GetByIdCategoryDto> GetByIdCategoryAsync(string id)
+        public async Task<UpdateCategoryDto> GetByIdCategoryAsync(string id)
         {
             var responseMessage = await _httpClient.GetAsync("categories/"+id);
-            var values = await responseMessage.Content.ReadFromJsonAsync<GetByIdCategoryDto>();
+            var values = await responseMessage.Content.ReadFromJsonAsync<UpdateCategoryDto>();
             return values;
         }
 
         public async Task UpdateCategoryAsync(UpdateCategoryDto updateCategoryDto)
         {
-            await _httpClient.PutAsJsonAsync<UpdateCategoryDto>("categories", updateCategoryDto);
+            await _httpClient.PutAsJsonAsync("categories", updateCategoryDto);
         }
     }
 }
