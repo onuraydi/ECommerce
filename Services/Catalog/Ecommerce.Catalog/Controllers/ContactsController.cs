@@ -46,7 +46,7 @@ namespace ECommerce.Catalog.Controllers
             return Ok("Mesaj Başarıyla Güncellendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteContact(string id)
         {
             await _contactService.DeleteContactAsync(id);

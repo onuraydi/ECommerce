@@ -8,7 +8,7 @@ namespace ECommercial.Comment.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [AllowAnonymous]
+    [Authorize]
     public class CommentsController : ControllerBase
     {
         private readonly CommentContext _commentContext;
@@ -57,7 +57,7 @@ namespace ECommercial.Comment.Controllers
             return Ok(values);
         }
 
-        [HttpGet("CommentListByProductId")]
+        [HttpGet("CommentListByProductId/{id}")]
         public IActionResult CommentListByProductId(string id)
         {
             var value = _commentContext.UserComments.Where(x => x.ProductId == id).ToList();
