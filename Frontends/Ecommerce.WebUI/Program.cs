@@ -1,5 +1,6 @@
 using Ecommerce.WebUI.Controllers;
 using Ecommerce.WebUI.Handlers;
+using Ecommerce.WebUI.Services.BasketServices;
 using Ecommerce.WebUI.Services.CatalogServices.AboutService;
 using Ecommerce.WebUI.Services.CatalogServices.BrandServices;
 using Ecommerce.WebUI.Services.CatalogServices.CategoryServices;
@@ -153,6 +154,13 @@ builder.Services.AddHttpClient<IContactService, ContactService>(opt =>
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
 
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+//Basket
+builder.Services.AddHttpClient<IBasketService, BasketService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Basket.Path}");
+
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();  // dikkat birkaç tanesi de bu şekilde olabilir
 
 var app = builder.Build();
 

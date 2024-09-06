@@ -1,4 +1,10 @@
-﻿namespace ECommerce.Basket.WebApi.Dtos
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ECommerce.DtoLayer.BasketDtos
 {
     public class BasketItemDto
     {
