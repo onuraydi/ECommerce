@@ -14,6 +14,7 @@ using Ecommerce.WebUI.Services.CatalogServices.ProductServices;
 using Ecommerce.WebUI.Services.CatalogServices.SpecialOfferServices;
 using Ecommerce.WebUI.Services.CommentServices;
 using Ecommerce.WebUI.Services.Concrete;
+using Ecommerce.WebUI.Services.DiscountServices;
 using Ecommerce.WebUI.Services.Interfaces;
 using Ecommerce.WebUI.Settings;
 using ECommerce.WebUI.Settings;
@@ -65,6 +66,8 @@ builder.Services.AddScoped<ClientCredentialTokenHandler>();
 builder.Services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTokenService>();
 
 var values = builder.Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
+
+
 builder.Services.AddHttpClient<IUserService, UserService>(opt =>
 {
     opt.BaseAddress = new Uri(values.IdinetityServerUrl);
@@ -90,7 +93,6 @@ builder.Services.AddHttpClient<IProductImageService, ProductImageService>(opt =>
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
 
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
-
 
 //Product details
 builder.Services.AddHttpClient<IProductDetailService, ProductDetailService>(opt =>
@@ -159,6 +161,13 @@ builder.Services.AddHttpClient<IContactService, ContactService>(opt =>
 builder.Services.AddHttpClient<IBasketService, BasketService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Basket.Path}");
+
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();  // dikkat birkaç tanesi de bu şekilde olabilir
+
+//Discount coupon
+builder.Services.AddHttpClient<IDiscountService, DiscountService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Discount.Path}");
 
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();  // dikkat birkaç tanesi de bu şekilde olabilir
 

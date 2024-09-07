@@ -1,5 +1,6 @@
 ﻿using Ecommerce.WebUI.Services.BasketServices;
 using Ecommerce.WebUI.Services.CatalogServices.ProductServices;
+using Ecommerce.WebUI.Services.DiscountServices;
 using ECommerce.DtoLayer.BasketDtos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,10 +17,35 @@ namespace Ecommerce.WebUI.Controllers
             _productService = productService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string couponCode, int discountRate,decimal totalWithSale, decimal cargoWithSale, decimal totalDiscount)
         {
+            ViewBag.couponCode = couponCode;
+            ViewBag.discountRate = discountRate;
+            ViewBag.totalWithSale = totalWithSale;
+            ViewBag.cargoWithSale = cargoWithSale;
+            ViewBag.totalDiscount = totalDiscount;
             var values = await _basketService.GetBasket();
-            return View(values);
+            decimal cargo;
+            decimal totalPrice;
+            if (values.TotalPrice == 0)
+            {
+                cargo = 0;
+                totalPrice = 0;
+            }
+            else if (values.TotalPrice >= 500.00M)
+            {
+                cargo = 0;
+                totalPrice = values.TotalPrice;
+            }
+            else
+            {
+                cargo = 29.99M;
+                totalPrice = values.TotalPrice + cargo;
+            }
+            ViewBag.cargo = cargo;
+            ViewBag.total = totalPrice;
+            ViewBag.totalWithoutCargo = values.TotalPrice;
+            return View();
         }
         
         public async Task<IActionResult> AddBasketItem(string id)

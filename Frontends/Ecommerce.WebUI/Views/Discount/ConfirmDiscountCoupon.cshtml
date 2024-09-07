@@ -1,0 +1,76 @@
+﻿
+<div class="col-lg-4">
+    <form class="mb-30" asp-controller="Discount" asp-action="ConfirmDiscountCoupon" method="post">
+        <div class="input-group">
+            <input type="text" name="couponCode" value="@ViewBag.couponCode" class="form-control border-0 p-4" placeholder="Kupon Kodu">
+            <div class="input-group-append">
+                <button class="btn btn-primary">Kodu Kullan</button>
+            </div>
+        </div>
+    </form>
+    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Sepet Toplamı</span></h5>
+    <div class="bg-light p-30 mb-5">
+        @if (ViewBag.discountRate == 0)
+        {
+            <div class="border-bottom pb-2">
+                <div class="d-flex justify-content-between mb-2">
+                    <h6>Ara Toplam</h6>
+                    <h6>@ViewBag.totalWithoutCargo ₺</h6>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <h6 class="font-weight-medium">Kargo</h6>
+                    <h6 class="font-weight-medium">@ViewBag.cargo ₺</h6>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <h6 class="font-weight-medium">İndirim Oranı</h6>
+                    <h6 class="font-weight-medium">@ViewBag.discountRate %</h6>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <h6 class="font-weight-medium">Kazancınız</h6>
+                    <h6 class="font-weight-medium">0 ₺</h6>
+                </div>
+            </div>
+            <div class="pt-2">
+                <div class="d-flex justify-content-between mt-2">
+                    <h5>Toplam</h5>
+                    <h5>@ViewBag.total ₺</h5>
+                </div>
+                <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">İşlemi Onayla</button>
+            </div>
+        }
+        else
+        {
+            decimal profit = @ViewBag.totalDiscount - @ViewBag.cargoWithSale;
+            decimal sumByTheDiscount = @ViewBag.totalWithoutCargo - @ViewBag.totalDiscount;
+            <div class="border-bottom pb-2">
+                <div class="d-flex justify-content-between mb-2">
+                    <h6>Ara Toplam</h6>
+                    <h6>@ViewBag.totalWithoutCargo ₺</h6>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <h6>İndirimli Toplam</h6>
+                    <h6>@sumByTheDiscount ₺</h6>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <h6 class="font-weight-medium">Kargo</h6>
+                    <h6 class="font-weight-medium">@ViewBag.cargoWithSale ₺</h6>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <h6 class="font-weight-medium">İndirim Oranı</h6>
+                    <h6 class="font-weight-medium">@ViewBag.discountRate %</h6>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <h6 class="font-weight-medium">Kazancınız</h6>
+                    <h6 class="font-weight-medium" style="color:lawngreen">@profit ₺</h6>
+                </div>
+            </div>
+            <div class="pt-2">
+                <div class="d-flex justify-content-between mt-2">
+                    <h5>Toplam</h5>
+                    <h5>@ViewBag.totalWithSale ₺</h5>
+                </div>
+                <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">İşlemi Onayla</button>
+            </div>
+        }
+    </div>
+</div>

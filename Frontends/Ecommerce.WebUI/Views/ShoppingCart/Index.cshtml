@@ -24,8 +24,10 @@
         @await Component.InvokeAsync("_ShoppingCartProductListComponentPartial")
         <!-- Product Lİst(sepetteki ürünler) End -->
         <!-- Discount Coupon Start -->
-        @await Component.InvokeAsync("_ShoppingCartDiscountCouponComponentPartial")
+        @*@await Component.InvokeAsync("_ShoppingCartDiscountCouponComponentPartial")*@
         <!-- Discount Coupon End -->
+        <!-- Discount Copuon -->
+        @await Html.PartialAsync("~/Views/Discount/ConfirmDiscountCoupon.cshtml")
     </div>
 </div>
 <!-- Cart End -->

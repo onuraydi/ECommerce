@@ -38,7 +38,7 @@ namespace ECommerce.Discount.Controllers
             return Ok("Kupon Başarıyla Eklendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> deleteDiscountCoupon(int id)
         {
             await _discountService.DeleteDiscountCouponAsync(id);
@@ -50,6 +50,19 @@ namespace ECommerce.Discount.Controllers
         {
             await _discountService.UpdateDiscountCouponAsync(updateDiscountCouponDto);
             return Ok("Kupon Başarıyla Güncellendi");
+        }
+
+        [HttpGet("GetCodeDetailByCodeAsync")]  
+        public async Task<IActionResult> GetCodeDetailByCodeAsync(string couponCode)
+        {
+            var values = await _discountService.GetCodeDetailByCodeAsync(couponCode);
+            return Ok(values);
+        }
+        [HttpGet("GetDiscountCouponCouponRate")]
+        public IActionResult GetDiscountCouponCouponRate(string couponCode)
+        {
+            var values = _discountService.GetDiscountCouponCouponRate(couponCode);
+            return Ok(values);
         }
     }
 }
