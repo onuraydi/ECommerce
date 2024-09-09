@@ -21,7 +21,7 @@ namespace ECommerce.Order.Application.Features.CQRS.Handlers.AddressHandlers
         public async Task Handle(UpdateAddressCommand updateAddressCommand)
         {
             var values = await _repository.GetByIdAsync(updateAddressCommand.AddressID);
-            values.AddressDetail = updateAddressCommand.AddressDetail;
+            values.AddressDetail1 = updateAddressCommand.AddressDetail;
             values.City = updateAddressCommand.City;
             values.District = updateAddressCommand.District;
             values.UserID = updateAddressCommand.UserID;

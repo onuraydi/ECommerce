@@ -32,7 +32,7 @@ namespace Ecommerce.WebUI.Controllers
             decimal cargo;
             decimal totalPrice = totalNewPriceWithDiscount;
             decimal totalPriceWithCargo;
-            if(basketValues.TotalPrice == 0)
+            if (basketValues.TotalPrice == 0)
             {
                 cargo = 0;
                 totalPriceWithCargo = 0;
@@ -60,9 +60,6 @@ namespace Ecommerce.WebUI.Controllers
                 cargoWithSale = cargo,
                 totalDiscount = totalDiscount,
             });
-
-
-            return View(values);
         }
     }
 }

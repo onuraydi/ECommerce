@@ -16,6 +16,7 @@ using Ecommerce.WebUI.Services.CommentServices;
 using Ecommerce.WebUI.Services.Concrete;
 using Ecommerce.WebUI.Services.DiscountServices;
 using Ecommerce.WebUI.Services.Interfaces;
+using Ecommerce.WebUI.Services.OrderServices.OrderAddressServices;
 using Ecommerce.WebUI.Settings;
 using ECommerce.WebUI.Settings;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -170,6 +171,13 @@ builder.Services.AddHttpClient<IDiscountService, DiscountService>(opt =>
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Discount.Path}");
 
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();  // dikkat birkaç tanesi de bu şekilde olabilir
+
+// Order Address
+builder.Services.AddHttpClient<IOrderAddressService, OrderAddressService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Order.Path}");
+
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 var app = builder.Build();
 

@@ -23,9 +23,17 @@ namespace ECommerce.Order.Application.Features.CQRS.Handlers.AddressHandlers
             await _repository.CreateAsync(new Address
             {
                 City = createAddressCommand.City,
-                AddressDetail = createAddressCommand.AddressDetail,
+                AddressDetail1 = createAddressCommand.AddressDetail1,
                 District = createAddressCommand.District,
-                UserID = createAddressCommand.UserID
+                UserID = createAddressCommand.UserID,
+                Country = createAddressCommand.Country,
+                Description = createAddressCommand.Description,
+                AddressDetail2 = createAddressCommand.AddressDetail2,
+                Email = createAddressCommand.Email,
+                Name = createAddressCommand.Name,
+                Phone = createAddressCommand.Phone,
+                Surname = createAddressCommand.Surname,
+                ZipCode = createAddressCommand.ZipCode,
             });
         }
     }
