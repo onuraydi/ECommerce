@@ -28,7 +28,7 @@ namespace Ecommerce.WebUI.Controllers
             var values = await _userService.GetUserInfo();
             createOrderAddressDto.UserID = values.Id;
             await _orderAddressService.CreateOrderAddressAsync(createOrderAddressDto);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Payment");
         }
     }
 }
