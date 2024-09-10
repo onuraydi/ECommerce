@@ -23,6 +23,7 @@ builder.Services.AddDbContext<OrderContext>();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddApplicationService(builder.Configuration);
+builder.Services.AddScoped(typeof(IOrderingRepository), typeof(OrderingRepository));
 //
 
 
