@@ -38,7 +38,7 @@ namespace ECommercial.Cargo.WebApi.Controllers
             return Ok("Kargo Şirketi Başarıyla Oluşturuldu");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult RemoveCargoCompany(int id)
         {
             _companyService.Tdelete(id);

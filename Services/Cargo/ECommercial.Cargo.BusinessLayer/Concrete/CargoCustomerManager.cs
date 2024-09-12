@@ -32,6 +32,11 @@ namespace ECommercial.Cargo.BusinessLayer.Concrete
             return _cargoCustomerDal.GetById(id);
         }
 
+        public CargoCustomer TGetCargoCustomerById(string id)
+        {
+            return _cargoCustomerDal.GetCargoCustomerById(id);
+        }
+
         public void Tinsert(CargoCustomer entity)
         {
             _cargoCustomerDal.insert(entity);

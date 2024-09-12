@@ -16,5 +16,7 @@ namespace ECommercial.Cargo.DtoLayer.Dtos.CargoCustomerDtos
         public string City { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
+        public string UserCustomerId { get; set; }
+
     }
 }

@@ -2,6 +2,7 @@
 using ECommercial.Cargo.DataAccessLayer.Repositories;
 using ECommercial.Cargo.DtoLayer.Concrete;
 using ECommercial.Cargo.EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,16 @@ namespace ECommercial.Cargo.DataAccessLayer.EntityFramework
 {
     public class EfCargoCustomerDal : GenericRepository<CargoCustomer>, ICargoCustomerDal
     {
-        public EfCargoCustomerDal(CargoContext context) : base(context)
+        private readonly CargoContext _cargoContext;
+        public EfCargoCustomerDal(CargoContext context, CargoContext cargoContext) : base(context)
         {
+            _cargoContext = cargoContext;
+        }
+
+        public CargoCustomer GetCargoCustomerById(string id)
+        {
+            var values = _cargoContext.CargoCustomers.Where(x => x.UserCustomerId == id).FirstOrDefault();
+            return values;
         }
     }
 }

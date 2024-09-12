@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommercial.Cargo.EntityLayer.Concrete
+namespace ECommerce.DtoLayer.CargoDtos.CargoCustomerDtos
 {
-    public class CargoCustomer
+    public class GetCargoCustomerByIdDto
     {
         public int CargoCustomerID { get; set; }
         public string Name { get; set; }
@@ -16,7 +16,6 @@ namespace ECommercial.Cargo.EntityLayer.Concrete
         public string City { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public string? UserCustomerId { get; set; }
-
+        public string UserCustomerId { get; set; }
     }
 }
