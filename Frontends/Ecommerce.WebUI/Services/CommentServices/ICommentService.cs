@@ -10,5 +10,8 @@ namespace Ecommerce.WebUI.Services.CommentServices
         Task UpdateCommentAsync(UpdateCommentDto updateCommentDto);
         Task DeleteCommentAsync(int id);
         Task<UpdateCommentDto> GetByIdCommentAsync(int id);
+        Task<int> GetTotalCommentCountAsync();
+        Task<int> GetActiveCommentCountAsync();
+        Task<int> GetPassiveCommentCountAsync();
     }
 }

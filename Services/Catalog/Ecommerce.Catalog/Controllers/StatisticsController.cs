@@ -43,17 +43,17 @@ namespace ECommerce.Catalog.Controllers
             return Ok(value);
         }
 
-        [HttpGet("GetMaxPricePriceProductName")]
-        public async Task<IActionResult> GetMaxPricePriceProductName()
+        [HttpGet("GetMaxPriceProductName")]
+        public async Task<IActionResult> GetMaxPriceProductName()
         {
-            var value = await _statisticService.GetMaxPricePriceProductNameAsync();
+            var value = await _statisticService.GetMaxPriceProductNameAsync();
             return Ok(value);
         }
 
-        [HttpGet("GetMinPricePriceProductName")]
-        public async Task<IActionResult> GetMinPricePriceProductName()
+        [HttpGet("GetMinPriceProductName")]
+        public async Task<IActionResult> GetMinPriceProductName()
         {
-            var value = await _statisticService.GetMinPricePriceProductNameAsync();
+            var value = await _statisticService.GetMinPriceProductNameAsync();
             return Ok(value);
         }
     }

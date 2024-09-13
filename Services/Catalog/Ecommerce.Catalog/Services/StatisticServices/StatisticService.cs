@@ -32,7 +32,7 @@ namespace ECommerce.Catalog.Services.StatisticServices
             return await _categoryCollection.CountDocumentsAsync(FilterDefinition<Category>.Empty);
         }
 
-        public async Task<string> GetMaxPricePriceProductNameAsync()
+        public async Task<string> GetMaxPriceProductNameAsync()
         {
             var filter = Builders<Product>.Filter.Empty;
             var sort = Builders<Product>.Sort.Descending(x => x.ProductPrice);
@@ -41,7 +41,7 @@ namespace ECommerce.Catalog.Services.StatisticServices
             return product.GetValue("ProductName").AsString;
         }
 
-        public async Task<string> GetMinPricePriceProductNameAsync()
+        public async Task<string> GetMinPriceProductNameAsync()
         {
             var filter = Builders<Product>.Filter.Empty;
             var sort = Builders<Product>.Sort.Ascending(x => x.ProductPrice);

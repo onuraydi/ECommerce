@@ -20,6 +20,11 @@ using Ecommerce.WebUI.Services.DiscountServices;
 using Ecommerce.WebUI.Services.Interfaces;
 using Ecommerce.WebUI.Services.OrderServices.OrderAddressServices;
 using Ecommerce.WebUI.Services.OrderServices.OrderOrderingServices;
+using Ecommerce.WebUI.Services.StatisticServices.CatalogStatisticServices;
+using Ecommerce.WebUI.Services.StatisticServices.DiscountStatisticServices;
+using Ecommerce.WebUI.Services.StatisticServices.MessageStatisticService;
+using Ecommerce.WebUI.Services.StatisticServices.MessageStatisticServices;
+using Ecommerce.WebUI.Services.StatisticServices.UserStatisticServices;
 using Ecommerce.WebUI.Services.UserIdentityServices;
 using Ecommerce.WebUI.Services.UserMessageServices;
 using Ecommerce.WebUI.Settings;
@@ -199,7 +204,7 @@ builder.Services.AddHttpClient<IUserMessageService, UserMessageService>(opt =>
 // identity userList
 builder.Services.AddHttpClient<IUserIdentityService, UserIdentityService>(opt =>
 {
-    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.IdinetityServerUrl}");
+    opt.BaseAddress = new Uri(values.IdinetityServerUrl);
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 // Cargo COmpany
@@ -214,8 +219,33 @@ builder.Services.AddHttpClient<ICargoCustomerService, CargoCustomerService>(opt 
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Cargo.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
-var app = builder.Build();
+// catalog statistic
+builder.Services.AddHttpClient<ICatalogStatisticService, CatalogStatisticService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
+// user statistic
+builder.Services.AddHttpClient<IUserStatisticService, UserStatisticService>(opt =>
+{
+    opt.BaseAddress = new Uri(values.IdinetityServerUrl);
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();  //farklı
+
+// Message Statistic
+builder.Services.AddHttpClient<IMessageStatisticService, MessageStatisticService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Message.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+// discount Statistic
+builder.Services.AddHttpClient<IDiscountStatisticService, DiscountStatisticService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Discount.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+
+
+var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

@@ -1,6 +1,6 @@
-﻿namespace ECommerce.Catalog.Services.StatisticServices
+﻿namespace Ecommerce.WebUI.Services.StatisticServices.CatalogStatisticServices
 {
-    public interface IStatisticService
+    public interface ICatalogStatisticService
     {
         Task<long> GetCategoryCountAsync();
         Task<long> GetProductCountAsync();
