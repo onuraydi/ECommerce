@@ -74,6 +74,17 @@ namespace ECommerce.Discount.Services
             }
         }
 
+        public async Task<int> GetDiscountCouponCount()
+        {
+            string query = "select Count(*) from Coupons";
+            using (var connection = _dapperContext.createConnection())
+            {
+                var values = await connection.QueryFirstOrDefaultAsync<int>(query);
+                return values;
+            }
+
+        }
+
         public int GetDiscountCouponCouponRate(string couponCode)
         {
             string query = "Select CouponRate from Coupons where CouponCode = @couponCode";

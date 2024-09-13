@@ -10,6 +10,7 @@ using ECommerce.Catalog.Services.FeatureServices;
 using ECommerce.Catalog.Services.FetaureSliderServices;
 using ECommerce.Catalog.Services.OfferDiscountServices;
 using ECommerce.Catalog.Services.SpeacialOfferServices;
+using ECommerce.Catalog.Services.StatisticServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using System.Reflection;
@@ -37,6 +38,7 @@ builder.Services.AddScoped<IOfferDiscountService, OfferDiscountService>();
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<IAboutService, AboutService>();
 builder.Services.AddScoped<IContactService, ContactService>();
+builder.Services.AddScoped<IStatisticService, StatisticService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());  // Auto mapper için
 

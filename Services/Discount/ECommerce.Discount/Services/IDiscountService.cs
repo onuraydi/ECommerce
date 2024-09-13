@@ -11,5 +11,6 @@ namespace ECommerce.Discount.Services
         Task<GetByIdDiscountCouponDto> GetByIdDiscountCouponAsync(int id);
         Task<ResultDiscountCouponDto> GetCodeDetailByCodeAsync(string couponCode);
         int GetDiscountCouponCouponRate(string couponCode);
+        Task<int> GetDiscountCouponCount();
     }
 }
