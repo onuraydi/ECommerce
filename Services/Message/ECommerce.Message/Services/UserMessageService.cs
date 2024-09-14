@@ -67,5 +67,11 @@ namespace ECommerce.Message.Services
             _messageContext.UserMessages.Update(value);
             _messageContext.SaveChanges();
         }
+
+        public async Task<int> GetTotalMessageCountByRecieverId(string id)
+        {
+            var values = await _messageContext.UserMessages.Where(x => x.ReceiverId == id).CountAsync();
+            return values;  
+        }
     }
 }

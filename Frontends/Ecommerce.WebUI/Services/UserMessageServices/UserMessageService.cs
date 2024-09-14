@@ -53,6 +53,13 @@ namespace Ecommerce.WebUI.Services.UserMessageServices
             return values;
         }
 
+        public async Task<int> GetTotalMessageCountByRecieverId(string id)
+        {
+            var responseMessage = await _httpClient.GetAsync("/services/message/messages/GetTotalMessageCountByRecieverId?id=" + id);
+            var values = await responseMessage.Content.ReadFromJsonAsync<int>();
+            return values;
+        }
+
         public async Task UpdateMessageAsync(UpdateMessageDto updateMessageDto)
         {
             await _httpClient.PutAsJsonAsync("messages", updateMessageDto);

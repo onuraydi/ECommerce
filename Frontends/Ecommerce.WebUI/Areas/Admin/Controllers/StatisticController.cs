@@ -41,7 +41,7 @@ namespace Ecommerce.WebUI.Areas.Admin.Controllers
             var minPriceValue = await _catalogStatisticService.GetMinPriceProductNameAsync();
             ViewBag.minPriceProductName = minPriceValue;
 
-            //var avgPriceValue = await _catalogStatisticService.GetProductAvgPriceAsync();
+            //var avgPriceValue = (maxPriceValue + minPriceValue);
             //ViewBag.avgPriceProductName = avgPriceValue;
 
             var userValue = await _userStatisticService.GetUserCount();
