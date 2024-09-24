@@ -31,6 +31,7 @@ using Ecommerce.WebUI.Settings;
 using ECommerce.WebUI.Settings;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -87,7 +88,7 @@ builder.Services.AddHttpClient<IUserService, UserService>(opt =>
 //categories
 builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
 {
-    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");  
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
 
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
@@ -244,6 +245,15 @@ builder.Services.AddHttpClient<IDiscountStatisticService, DiscountStatisticServi
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 
+builder.Services.AddLocalization(opt =>
+{
+    opt.ResourcesPath = "Resources";
+});
+
+builder.Services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
+
+
+
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -259,6 +269,15 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+
+var supportedCultures = new[]
+{
+    "en","de","tr"
+};
+
+var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture("tr").AddSupportedCultures(supportedCultures).AddSupportedUICultures(supportedCultures);
+
+app.UseRequestLocalization(localizationOptions);
 
 app.MapControllerRoute(
     name: "default",
