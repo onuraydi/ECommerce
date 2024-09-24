@@ -16,7 +16,7 @@ namespace ECommerce.RapidApi.Controllers
                 RequestUri = new Uri("https://the-weather-api.p.rapidapi.com/api/weather/istanbul"),
                 Headers =
     {
-        { "x-rapidapi-key", "b595381040msh6a7c6adccb89aa0p14bfa8jsnd08043a07c9a" },
+        { "x-rapidapi-key", "..." },
         { "x-rapidapi-host", "the-weather-api.p.rapidapi.com" },
     },
             };
@@ -39,7 +39,7 @@ namespace ECommerce.RapidApi.Controllers
                 RequestUri = new Uri("https://real-time-finance-data.p.rapidapi.com/currency-exchange-rate?from_symbol=USD&language=en&to_symbol=TRY"),
                 Headers =
     {
-        { "x-rapidapi-key", "b595381040msh6a7c6adccb89aa0p14bfa8jsnd08043a07c9a" },
+        { "x-rapidapi-key", "..." },
         { "x-rapidapi-host", "real-time-finance-data.p.rapidapi.com" },
     },
             };
